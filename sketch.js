@@ -3,10 +3,10 @@ const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
-var ground,circle,engine,world
+var ground,circle,engine,world, dust,fakeobj
 function preload()
 {
- 
+ dust=loadImage("dustbingreen.png")
 }
 
 function setup() {
@@ -18,10 +18,13 @@ function setup() {
 
 	//Create the Bodies Here.
 	ground=new Ground(400,350,800,15)
-    circle=new Circle(50,30,10)
+    circle=new Circle(50,30,20)
     bin1=new Dustbin(580,300,20,100)
-    bin2=new Dustbin(650,335,120,20)
-    bin3=new Dustbin(700,300,20,100)
+    
+    bin3=new Dustbin(670,300,20,100)
+    fakeobj=createSprite(630,305,160,20)
+    fakeobj.addImage("green",dust)
+    fakeobj.scale=0.35
 	Engine.run(engine);
   
 }
@@ -29,12 +32,14 @@ function setup() {
 
 function draw() {
   rectMode(CENTER);
-  background(0);
-  circle.display()
+  background("white");
+
   ground.display()
   bin1.display()
-  bin2.display()
+ 
   bin3.display()
+  
+  circle.display()
   drawSprites();
  
 }
@@ -42,6 +47,6 @@ function draw() {
 function keyPressed(){
 if(keyCode===UP_ARROW)
 
-Matter.Body.applyForce(circle.body,circle.body.position,{x:15,y:-15})
+Matter.Body.applyForce(circle.body,circle.body.position,{x:65,y:-65})
 }
 

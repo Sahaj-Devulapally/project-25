@@ -7,12 +7,12 @@ class Dustbin{
       this.width = width;
       this.height = height;
       
- this.image=loadImage("dustbingreen.png")
+ 
     }
     display()
     {
-        imageMode(CENTER);
-        image(this.imagethis.body.position.x, this.body.position.y,this.width, this.height);
+        rectMode(CENTER);
+        rect(this.body.position.x, this.body.position.y,this.width, this.height);
     }
 
 
